@@ -1,0 +1,17 @@
+{
+  "name": "TIDELINE \u2014 An atlas of time",
+  "short_name": "TIDELINE",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f1e9",
+  "theme_color": "#f4f1e9",
+  "description": "Travel through time and explore the events, inventions, cultures and everyday life that shaped our world.",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
