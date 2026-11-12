@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f1e9">
+  <meta name="description" content="Travel through time. Explore the events, inventions, people and everyday life that shaped our world.">
+  <title>TIDELINE — An atlas of time</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Tideline home"><span class="brand-mark">◉</span><span>TIDELINE</span></a>
+      <span class="top-note">AN ATLAS OF TIME</span>
+      <div class="top-actions"><button class="quiet-button" id="themeBtn" aria-label="Toggle dark mode">NIGHT MODE</button><button class="quiet-button" id="aboutBtn">ABOUT <span>↗</span></button></div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow"><span class="live-dot"></span> THE WORLD, IN PERSPECTIVE</div>
+        <div class="year-line"><h1 id="heroYear">1969</h1><span class="year-period" id="yearPeriod">CE</span></div>
+        <div class="hero-meta">
+          <div><h2 id="eraTitle">The age of possibility</h2><p id="eraDescription">A world reaching beyond its limits.</p></div>
+          <div class="era-index" id="eraIndex">20TH CENTURY · 01 / 01</div>
+        </div>
+      </section>
+
+      <section class="time-panel" aria-label="Time navigation">
+        <div class="panel-heading"><span>TRAVEL THROUGH TIME</span><strong id="rangeLabel">1969 CE</strong></div>
+        <div class="range-wrap">
+          <input id="yearRange" type="range" min="0" max="0" value="0" aria-label="Select a year">
+          <div class="range-labels"><span>3000 BCE</span><span>500 CE</span><span>1500</span><span>2000</span><span>2025</span></div>
+        </div>
+        <div class="jump-row" id="quickJumps">
+          <button data-jump="ancient">ANCIENT</button><button data-jump="medieval">MEDIEVAL</button><button data-jump="renaissance">RENAISSANCE</button><button data-jump="modern">MODERN</button><button data-jump="contemporary">CONTEMPORARY</button>
+        </div>
+      </section>
+
+      <section class="explorer">
+        <div class="section-head">
+          <div><div class="eyebrow">THE WORLD AT THIS MOMENT</div><h2>A moment in time<span class="accent">.</span></h2></div>
+          <div class="section-side">CURATED HISTORICAL RECORD <span>✳</span></div>
+        </div>
+        <div class="filter-row" id="filters">
+          <button class="filter active" data-filter="All">Everything <span id="allCount"></span></button>
+          <button class="filter" data-filter="World">World</button>
+          <button class="filter" data-filter="Science">Science</button>
+          <button class="filter" data-filter="Culture">Culture</button>
+          <button class="filter" data-filter="Ideas">Ideas</button>
+          <button class="filter" data-filter="Daily life">Daily life</button>
+        </div>
+        <div class="event-list" id="eventList" aria-live="polite"></div>
+        <div class="empty-state" id="emptyState" hidden>No entries in this category for this moment. Try another year or category.</div>
+      </section>
+
+      <section class="world-panel">
+        <div class="world-copy">
+          <div class="eyebrow">BEYOND THE HEADLINES</div>
+          <h2>What was life<br>actually like<span class="accent">?</span></h2>
+          <p>History isn't only made of dates and declarations. It's also the ordinary details: what people ate, wore, listened to, bought and dreamed about.</p>
+          <button class="text-link" id="lifeBtn">EXPLORE DAILY LIFE <span>↗</span></button>
+        </div>
+        <div class="life-grid" id="lifeGrid">
+          <article><span>01 / SOUND</span><strong id="lifeSound">Music of the era</strong><small>What people listened to</small></article>
+          <article><span>02 / OBJECTS</span><strong id="lifeObjects">Everyday technology</strong><small>Tools of ordinary life</small></article>
+          <article><span>03 / STYLE</span><strong id="lifeStyle">Clothing & design</strong><small>How the era looked</small></article>
+          <article><span>04 / RHYTHM</span><strong id="lifeRhythm">Daily routines</strong><small>How people spent their days</small></article>
+        </div>
+      </section>
+
+      <section class="parallel-section">
+        <div class="section-head">
+          <div><div class="eyebrow">ONE PLANET, MANY STORIES</div><h2>History in parallel<span class="accent">.</span></h2></div>
+          <p class="parallel-intro">The same year can mean very different things in different places. Explore overlapping stories across the globe.</p>
+        </div>
+        <div class="parallel-grid" id="parallelGrid"></div>
+      </section>
+
+      <section class="feature-section" id="mapSection">
+        <div class="section-head"><div><div class="eyebrow">GEOGRAPHY THROUGH THE AGES</div><h2>The world, redrawn<span class="accent">.</span></h2></div><p class="parallel-intro">Explore how power, movement and connection shaped places. This is a regional guide, not a precise historical-border map.</p></div>
+        <div class="map-periods" id="mapPeriods"><button class="map-period active" data-map-period="1900">1900</button><button class="map-period" data-map-period="1914">1914</button><button class="map-period" data-map-period="1945">1945</button><button class="map-period" data-map-period="1960">1960</button><button class="map-period" data-map-period="1991">1991</button><button class="map-period" data-map-period="2025">2025</button></div>
+<div class="map-layout"><div class="map-visual" aria-label="Interactive historical world map"><svg id="historicalMap" viewBox="0 0 960 470" role="img" aria-label="Stylised world map with historical influence overlays">
+<path class="land" d="M80 102 L120 55 190 38 250 70 280 120 246 153 221 199 176 211 155 260 116 235 102 180 70 150Z M260 242 L295 250 319 300 300 358 276 414 250 373 243 315Z M430 105 L468 80 508 91 530 122 514 151 480 159 451 142Z M453 164 L502 161 536 197 531 256 508 307 478 340 452 296 439 239Z M516 92 L572 57 666 48 745 75 815 121 846 177 804 205 755 185 721 213 681 190 638 211 598 177 554 171 526 137Z M754 265 L807 252 855 282 842 333 798 357 763 327Z M870 382 L895 370 911 390 891 409Z"/>
+<g id="mapOverlays"></g><g class="map-graticule"><path d="M30 235H930 M480 20V445 M110 80Q480 235 850 80 M110 390Q480 235 850 390"/></g></svg>
+<div class="map-legend"><span><i class="legend-swatch swatch-british"></i> British Empire</span><span><i class="legend-swatch swatch-french"></i> French Empire</span><span><i class="legend-swatch swatch-other"></i> Other imperial powers</span></div><span class="map-disclaimer">SCHEMATIC HISTORICAL REACH · NOT EXACT BORDERS</span></div>
+<article class="map-detail"><div class="eyebrow" id="mapRegionLabel">1900 · GLOBAL EMPIRES</div><h3 id="mapTitle">A world shaped by empires.</h3><p id="mapText">Select a period or a region on the map to explore the forces shaping its political geography.</p><div class="map-year" id="mapYear">MAP PERIOD · 1900</div><button class="map-jump" id="mapJump">EXPLORE THIS YEAR IN THE TIMELINE ↗</button></article></div>
+      </section>
+      <section class="feature-section capsule-section"><div class="section-head"><div><div class="eyebrow">OPEN A WINDOW INTO THE YEAR</div><h2>Time capsules<span class="accent">.</span></h2></div><p class="parallel-intro">Explore period objects and primary-source collections: photographs, posters, inventions, documents and everyday things.</p></div><div class="capsule-grid" id="capsuleGrid"></div></section>
+      <section class="feature-section machine-section"><div class="section-head"><div><div class="eyebrow">FOLLOW THE THREAD</div><h2>Timeline machine<span class="accent">.</span></h2></div><p class="parallel-intro">Trace a subject across decades, then jump straight to a year in the archive.</p></div><div class="machine-panel"><label for="storySelect">FOLLOW A STORY</label><select id="storySelect"><option value="space">Space exploration</option><option value="internet">The internet</option><option value="cinema">Cinema</option><option value="architecture">Architecture & design</option><option value="human-rights">Human rights</option></select><div id="storyTrack" class="story-track"></div><button class="save-story" id="saveStoryBtn">＋ SAVE THIS STORY TO MY ARCHIVE</button></div></section>
+      <section class="feature-section then-now-section"><div class="section-head"><div><div class="eyebrow">TIME CHANGES EVERYTHING</div><h2>Then, now & next<span class="accent">.</span></h2></div><p class="parallel-intro">Move the year to compare how everyday life and technology have changed.</p></div><div class="then-now-panel"><div><span class="mini-label">THEN · SELECT A YEAR</span><strong id="thenYear">1969</strong><p id="thenText">A world in transition.</p></div><input id="thenNowRange" type="range" min="1900" max="2025" value="1969" aria-label="Compare a year from 1900 to 2025"><div><span class="mini-label">NOW · 2025</span><strong>2025</strong><p>Always-connected devices, global networks and an accelerating climate and technology transition.</p></div></div><div class="comparison-grid" id="comparisonGrid"></div></section>
+      <section class="feature-section sound-section"><div class="section-head"><div><div class="eyebrow">LISTEN TO THE PAST</div><h2>The sound of history<span class="accent">.</span></h2></div><p class="parallel-intro">A listening guide to the sounds that travelled through each era. Open collections to find recordings and performances.</p></div><div class="sound-card"><div class="sound-mark">♫</div><div><div class="eyebrow">SELECTED YEAR</div><h3 id="soundTitle">Music and memory</h3><p id="soundText">Explore the music, instruments and recordings associated with this moment.</p><div class="sound-links"><a id="soundLink" href="https://commons.wikimedia.org/wiki/Special:MediaSearch?type=audio" target="_blank" rel="noopener">WIKIMEDIA AUDIO ↗</a><a id="soundLocLink" href="https://www.loc.gov/audio/" target="_blank" rel="noopener">LIBRARY OF CONGRESS AUDIO ↗</a><a id="soundEuropeLink" href="https://www.europeana.eu/en/collections/topic/14-music" target="_blank" rel="noopener">EUROPEANA MUSIC ↗</a></div></div></div></section>
+      <section class="feature-section stories-section"><div class="section-head"><div><div class="eyebrow">GUIDED JOURNEYS</div><h2>Follow a story<span class="accent">.</span></h2></div><p class="parallel-intro">Explore a subject across time instead of moving year by year.</p></div><div class="story-cards"><button data-story="space"><span>01 / EXPLORATION</span><strong>Space exploration</strong><small>From early rocketry to deep-space missions</small></button><button data-story="internet"><span>02 / CONNECTION</span><strong>The internet</strong><small>From research network to everyday infrastructure</small></button><button data-story="cinema"><span>03 / CULTURE</span><strong>Cinema</strong><small>From silent films to streaming</small></button><button data-story="architecture"><span>04 / DESIGN</span><strong>Architecture & design</strong><small>How cities and objects express their time</small></button><button data-story="human-rights"><span>05 / IDEAS</span><strong>Human rights</strong><small>Declarations, movements and ongoing struggles</small></button></div></section>
+      <section class="feature-section archive-section"><div class="section-head"><div><div class="eyebrow">YOUR PERSONAL COLLECTION</div><h2>Personal archive<span class="accent">.</span></h2></div><p class="parallel-intro">Keep the years and moments you want to return to. Your saved list stays on this device.</p></div><div class="archive-controls"><button id="saveYearBtn">＋ SAVE THIS YEAR</button><select id="archiveFilter" aria-label="Filter personal archive"><option value="All">ALL COLLECTIONS</option><option value="Years">YEARS</option><option value="Events">EVENTS</option><option value="Stories">STORIES</option></select><span id="savedCount">0 SAVED</span></div><div id="savedArchive" class="saved-archive"><p class="archive-empty">Your archive is waiting. Save a year or an event to begin.</p></div></section>
+      <section class="quote-panel">
+        <div class="eyebrow">A THOUGHT TO TAKE WITH YOU</div>
+        <p class="serif-quote" id="reflection">The past is not a distant country. It is the ground beneath everything we know.</p>
+        <div class="quote-foot">TIDELINE / REFLECTIONS</div>
+      </section>
+    </main>
+    <footer><span>THE PAST IS NEVER JUST THE PAST.</span><span class="footer-right">TIDELINE <i>—</i> EXPLORE ENDLESSLY</span></footer>
+  </div>
+
+  <div class="modal-backdrop" id="modal" aria-hidden="true">
+    <article class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+      <div class="modal-kicker" id="modalKicker">WORLD / 1969</div>
+      <h2 id="modalTitle">An event title</h2>
+      <p id="modalBody"></p>
+      <div class="modal-extra" id="modalExtra"></div>
+      <div class="modal-actions"><button id="saveEventBtn">＋ SAVE TO MY ARCHIVE</button></div><div class="modal-bottom"><span id="modalDate"></span><span> TIDELINE ARCHIVE</span></div>
+    </article>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+    }
+  </script>
+</body>
+</html>
